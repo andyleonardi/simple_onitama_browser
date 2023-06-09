@@ -1,0 +1,59 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: orange;
+    font-size: 1em;
+    color: black;
+    text-align: center;
+}
+
+header > h2, p {
+    margin: 0;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.links > div {
+    width: 80px;
+    margin: auto;
+    /* text-align: center; */
+}
+
+footer {
+    height: 25px;
+    background-color: orange;
+    color: black;
+    font-size: 1em;
+    text-align: center;
+}
+
+.player-row {
+    height:120px;
+}
+
+.board-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.board-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.square {
+    width:80px;
+    aspect-ratio: 1/1;
+    border: 1px solid black;
+    background-color: aliceblue;
+}
