@@ -7,29 +7,67 @@
     <title>Onitama Browser Ed</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="board.css" />
+    <link rel="stylesheet" href="cards.css" />
 </head>
 <header>
     <h2>Onitama Browser Edition</h2>
     <p>
         Carved into the crags of the mist-shrouded mountains of ancient Japan lies the Shrine of Onitama. It is a place of enlightenment and skill, a site dedicated to the spirits that guide the Schools of Martial Arts across the land.
-        <br/ >
+        <br/>
         Masters of these schools hazard the journey to Onitama with their most promising disciples to meet within its hallowed walls and to prove their superiority in battle against the others.
         <br/>
         These contests are more than simple combat — for in this place, the Animal spirits that guide the Schools whisper their guidance to the Masters, and bolster the students with otherworldly strength and dexterity.
     </p>
     <div class="links">
         <div class="how-to-play">
-            <a href="https://www.arcanewonders.com/wp-content/uploads/2021/05/Onitama-Rulebook.pdf">Rulebook</a>
+            <a href="https://www.arcanewonders.com/wp-content/uploads/2021/05/Onitama-Rulebook.pdf" target="_blank">Rulebook</a>
         </div>
         <div class="bgg-link">
-            <a href="https://boardgamegeek.com/boardgame/160477/onitama">BGG page</a> 
+            <a href="https://boardgamegeek.com/boardgame/160477/onitama" target="_blank">BGG page</a> 
         </div>
     </div>
 </header>
 
 <body>
     <div class="player-2-area player-row">
-        <div class="holding-box" id="hold-2"></div>
+        <div class="holding-box" id="hold-2">
+            <div class="cards" id="tiger">
+                <div class="top-card">
+                    <div class="card-img"></div>
+                    <div class="card-ability">
+                        <div class="card-square" id="card-1"></div>
+                        <div class="card-square" id="card-2"></div>
+                        <div class="card-square" id="card-3"></div>
+                        <div class="card-square" id="card-4"></div>
+                        <div class="card-square" id="card-5"></div>
+                        <div class="card-square" id="card-6"></div>
+                        <div class="card-square" id="card-7"></div>
+                        <div class="card-square" id="card-8"></div>
+                        <div class="card-square" id="card-9"></div>
+                        <div class="card-square" id="card-10"></div>
+                        <div class="card-square" id="card-11"></div>
+                        <div class="card-square" id="card-12"></div>
+                        <div class="card-square" id="card-13"></div>
+                        <div class="card-square" id="card-14"></div>
+                        <div class="card-square" id="card-15"></div>
+                        <div class="card-square" id="card-16"></div>
+                        <div class="card-square" id="card-17"></div>
+                        <div class="card-square" id="card-18"></div>
+                        <div class="card-square" id="card-19"></div>
+                        <div class="card-square" id="card-20"></div>
+                        <div class="card-square" id="card-21"></div>
+                        <div class="card-square" id="card-22"></div>
+                        <div class="card-square" id="card-23"></div>
+                        <div class="card-square" id="card-24"></div>
+                        <div class="card-square" id="card-25"></div>
+                    </div>
+                </div>
+                <div class="bottom-card">
+                    <p class="card-name">Tiger</p>
+                </div>
+            </div>
+        </div>
         <div class="play-area" id="play-2"></div>
         <div class="player-block blank-div"></div>
     </div>
@@ -65,18 +103,105 @@
                 <div class="square" id="20"></div>
             </div>
             <div class="row">
-                <div class="square" id="21"></div>
-                <div class="square" id="22"></div>
-                <div class="square" id="23"></div>
-                <div class="square" id="24"></div>
-                <div class="square" id="25"></div>
+                <div class="square" id="21">
+                    <div class="disciple-meeple" id="disciple-p1-1">
+                        <div class="disciple-img"></div>
+                    </div>
+                </div>
+                <div class="square" id="22">
+                    <div class="disciple-meeple" id="disciple-p1-2"></div>
+                </div>
+                <div class="square" id="23">
+                    <div class="master-meeple" id="master-p1">
+                        <div class="master-img"></div>
+                    </div>
+                </div>
+                <div class="square" id="24">
+                    <div class="disciple-meeple" id="disciple-p1-3">
+                        <div class="disciple-img"></div>
+                    </div>
+                </div>
+                <div class="square" id="25">
+                    <div class="disciple-meeple" id="disciple-p1-4"></div>
+                </div>
             </div>
         </div>
         <div class="board-block blank-div"></div>
     </div>
     <div class="player-1-area player-row">
         <div class="player-block blank-div"></div>
-        <div class="play-area" id="play-1"></div>
+        <div class="play-area" id="play-1">
+            <div class="cards" id="ox">
+                <div class="top-card">
+                    <div class="card-img"></div>
+                    <div class="card-ability">
+                        <div class="card-square" id="card-1"></div>
+                        <div class="card-square" id="card-2"></div>
+                        <div class="card-square" id="card-3"></div>
+                        <div class="card-square" id="card-4"></div>
+                        <div class="card-square" id="card-5"></div>
+                        <div class="card-square" id="card-6"></div>
+                        <div class="card-square" id="card-7"></div>
+                        <div class="card-square" id="card-8"></div>
+                        <div class="card-square" id="card-9"></div>
+                        <div class="card-square" id="card-10"></div>
+                        <div class="card-square" id="card-11"></div>
+                        <div class="card-square" id="card-12"></div>
+                        <div class="card-square" id="card-13"></div>
+                        <div class="card-square" id="card-14"></div>
+                        <div class="card-square" id="card-15"></div>
+                        <div class="card-square" id="card-16"></div>
+                        <div class="card-square" id="card-17"></div>
+                        <div class="card-square" id="card-18"></div>
+                        <div class="card-square" id="card-19"></div>
+                        <div class="card-square" id="card-20"></div>
+                        <div class="card-square" id="card-21"></div>
+                        <div class="card-square" id="card-22"></div>
+                        <div class="card-square" id="card-23"></div>
+                        <div class="card-square" id="card-24"></div>
+                        <div class="card-square" id="card-25"></div>
+                    </div>
+                </div>
+                <div class="bottom-card">
+                    <p class="card-name">Ox</p>
+                </div>
+            </div>
+            <div class="cards" id="Monkey">
+                <div class="top-card">
+                    <div class="card-img"></div>
+                    <div class="card-ability">
+                        <div class="card-square" id="card-1"></div>
+                        <div class="card-square" id="card-2"></div>
+                        <div class="card-square" id="card-3"></div>
+                        <div class="card-square" id="card-4"></div>
+                        <div class="card-square" id="card-5"></div>
+                        <div class="card-square" id="card-6"></div>
+                        <div class="card-square" id="card-7"></div>
+                        <div class="card-square" id="card-8"></div>
+                        <div class="card-square" id="card-9"></div>
+                        <div class="card-square" id="card-10"></div>
+                        <div class="card-square" id="card-11"></div>
+                        <div class="card-square" id="card-12"></div>
+                        <div class="card-square" id="card-13"></div>
+                        <div class="card-square" id="card-14"></div>
+                        <div class="card-square" id="card-15"></div>
+                        <div class="card-square" id="card-16"></div>
+                        <div class="card-square" id="card-17"></div>
+                        <div class="card-square" id="card-18"></div>
+                        <div class="card-square" id="card-19"></div>
+                        <div class="card-square" id="card-20"></div>
+                        <div class="card-square" id="card-21"></div>
+                        <div class="card-square" id="card-22"></div>
+                        <div class="card-square" id="card-23"></div>
+                        <div class="card-square" id="card-24"></div>
+                        <div class="card-square" id="card-25"></div>
+                    </div>
+                </div>
+                <div class="bottom-card">
+                    <p class="card-name">Monkey</p>
+                </div>
+            </div>
+        </div>
         <div class="holding-box" id="hold-1"></div>
     </div>
 </body>

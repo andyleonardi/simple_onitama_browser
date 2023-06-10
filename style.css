@@ -31,29 +31,3 @@ footer {
     font-size: 1em;
     text-align: center;
 }
-
-.player-row {
-    height:120px;
-}
-
-.board-area {
-    display: flex;
-    flex-direction: row;
-}
-
-.board-main {
-    display: flex;
-    flex-direction: column;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.square {
-    width:80px;
-    aspect-ratio: 1/1;
-    border: 1px solid black;
-    background-color: aliceblue;
-}
