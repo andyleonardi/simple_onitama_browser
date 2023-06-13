@@ -56,7 +56,6 @@ const resetBoard = () => {
         } else { // For disciple spaces
             // Disciples are in squares with id 1, 2, 4, 5, 21, 22, 24, 25
             const discipleSpace = document.getElementById(startPosition[i]);
-            console.log("selected ", discipleSpace);
             const discipleMeeple = document.createElement("div");
             discipleMeeple.classList.add("disciple-meeple");
             discipleMeeple.setAttribute("id",`disciple-${startPosition[i]}`);
@@ -82,15 +81,13 @@ const resetBoard = () => {
     }
 }
 
-resetBoard();
 
-/*
 const startGame = () => {
     // Initialize the meeples to their starting location
-
+    resetBoard();
     // [TO DO] Randomly draw 5 cards from the deck, and put them in an array
     // Harcode cards for now
-    let cardsInPlay = [tiger, ox, monkey, dragon, boar];
+    let cardsInPlay = [tiger, ox, monkey, dragon, cobra];
     // Initialize all cards
     const holdP1 = document.getElementById("hold-1");
     const playP1 = document.getElementById("play-1");
@@ -102,4 +99,5 @@ const startGame = () => {
     cardsInPlay[3](playP2);
     cardsInPlay[4](playP2);
 }
-*/
+
+startGame();
