@@ -15,31 +15,36 @@ const allCards = [ // Get it to work with just 5 cards: tiger, ox, monkey, drago
         id: "tiger",
         image: "https://i.imgur.com/GleAY3f.jpeg",
         moves: [[0,2],[0,-1]],
-        name: "Tiger"
+        name: "Tiger",
+        start: "play-2"
     },
     {
         id: "ox",
         image: "https://i.imgur.com/EHMlMVu.jpeg",
         moves: [[0,1],[0,-1],[1,0]],
-        name: "Ox"
+        name: "Ox",
+        start: "play-2"
     },
     {
         id: "monkey",
         image: "https://i.imgur.com/MxcySr9.jpeg",
         moves: [[-1,-1],[-1,1],[1,-1],[1,1]],
-        name: "Monkey"
+        name: "Monkey",
+        start: "play-2"
     },
     {
         id: "dragon",
         image: "https://i.imgur.com/tyR6oZ8.png",
         moves: [[-2,1],[2,1],[-1,-1],[1,-1]],
-        name: "Dragon"
+        name: "Dragon",
+        start: "play-1"
     },
     {
         id: "cobra",
         image: "https://i.imgur.com/pHZ7C77.jpeg",
         moves: [[-1,0],[1,1],[1,-1]],
-        name: "Cobra"
+        name: "Cobra",
+        start: "play-1"
     }
 ];
 
