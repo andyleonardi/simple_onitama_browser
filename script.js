@@ -107,7 +107,7 @@ const resetBoard = () => {
 }
 
 // Function to highlight clickable meeples & add event listener
-const activateMeeples = (who) => {
+const activateBoard = (who) => {
     // Get the index of the current player, so we can get the ids of the meeples
     let playerIndex = playersStats.findIndex((element)=>element.player===who);
     let remainingMeeples = playersStats[playerIndex].meeples.filter((element)=>element.life>0);
@@ -131,12 +131,12 @@ const startGame = () => {
     resetBoard();
     // [TO DO] Randomly draw 5 cards from the deck, and put them in an array
     // Harcode cards for now
-    let cardsInPlay = [dragon, tiger, ox, monkey, cobra];
+    let cardsInPlay = ["dragon", "tiger", "ox", "monkey", "cobra"];
     
     // Use the first element in cardsInPlay to determine start player, but since cardsInPlay now contain functions,
     // need to find a way to make it string
     // In the meantime, hardcode [NBED]
-    startPlayer = allCards[allCards.findIndex((element)=>element.id==="dragon")].start;
+    startPlayer = allCards[allCards.findIndex((element)=>element.id===cardsInPlay[0])].start;
     let currentPlayer = startPlayer;
 
     // Initialize all cards
@@ -144,11 +144,11 @@ const startGame = () => {
     const playP1 = document.getElementById("play-1");
     const playP2 = document.getElementById("play-2");
 
-    cardsInPlay[0](holdP1);
-    cardsInPlay[1](playP1);
-    cardsInPlay[2](playP1);
-    cardsInPlay[3](playP2);
-    cardsInPlay[4](playP2);
+    generateCard(cardsInPlay[0], holdP1);
+    generateCard(cardsInPlay[1], playP1);
+    generateCard(cardsInPlay[2], playP1);
+    generateCard(cardsInPlay[3], playP2);
+    generateCard(cardsInPlay[4], playP2);
 
     // Add click event listener on cards that are in current player's play area
     const cardsInPlayArea = document.querySelectorAll(`#${currentPlayer} .cards`);
@@ -156,10 +156,9 @@ const startGame = () => {
     for (let n of cardsInPlayArea) {
         n.addEventListener("click", (evt)=>{
             console.log("clicked this: ", evt.currentTarget);
-            
             document.querySelector(`#${n.id}`).style.backgroundColor = "gold";
-            // Function to highlight current player's meeples
-            activateMeeples(currentPlayer);
+            // Function to activate squares on the board for clicks
+            activateBoard(currentPlayer);
             // For each of those meeples, add click event listener
             
             

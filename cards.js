@@ -13,7 +13,7 @@
 const allCards = [ // Get it to work with just 5 cards: tiger, ox, monkey, dragon, cobra
     {
         id: "tiger",
-        image: "https://i.imgur.com/GleAY3f.jpeg",
+        image: "/images/tiger.jpeg",
         moves: [[0,2],[0,-1]],
         name: "Tiger",
         start: "play-2"
@@ -50,6 +50,64 @@ const allCards = [ // Get it to work with just 5 cards: tiger, ox, monkey, drago
 
 // Define card function
 // Function to include initializing the cards, and then setting event listener
+// Refactored:
+const generateCard = (cardId, doc) => {
+    // Find index of the parameter in the allCards array
+    const indexNum = allCards.findIndex((element)=>element.id===cardId);
+
+    // Generate the card
+    const cardOutline = document.createElement("div");
+    cardOutline.classList.add("cards");
+    cardOutline.setAttribute("id", cardId);
+    // Insert the card in the selected document object
+    doc.appendChild(cardOutline);
+
+    // First generate the two div containers, the top side of the card, and the bottom
+    const topCard = document.createElement("div");
+    topCard.classList.add("top-card");
+    const botCard = document.createElement("div");
+    botCard.classList.add("bottom-card");
+    cardOutline.appendChild(topCard);
+    cardOutline.appendChild(botCard);
+
+    // Next generate the content that goes to the top side of the card
+    // Left side is the image
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("card-img");
+    const url = allCards[indexNum].image;
+    cardImg.src = url;
+    // Right side is the move ability
+    const cardAbility = document.createElement("div");
+    cardAbility.classList.add("card-ability");
+    topCard.appendChild(cardImg);
+    topCard.appendChild(cardAbility);
+
+    // Create the move ability grids
+    for (i = 25 ; i > 0 ; i--) {
+        const cardSquare = document.createElement("div");
+        cardSquare.classList.add("card-square");
+        cardSquare.setAttribute("id", `card-${i}`);
+        if (i === 13) {cardSquare.style.backgroundColor = "black"};
+        cardAbility.appendChild(cardSquare);
+    }
+    // Highlight the possible spaces
+    let newSpace = 0;
+    for (j = 0 ; j < allCards[indexNum].moves.length ; j++) {
+        newSpace = 13 + allCards[indexNum].moves[j][0] + (5 * allCards[indexNum].moves[j][1]);
+        let selectedCardSquare = document.querySelector(`#${cardId} #card-${newSpace}`);
+        selectedCardSquare.style.backgroundColor = "gray";
+    }
+
+    // Finally, generate the content that goes to the bottom side of the card, i.e. the name of the card
+    const cardName = document.createElement("p");
+    cardName.classList.add("card-name");
+    const bottomName = allCards[indexNum].name;
+    cardName.textContent = bottomName;
+    botCard.appendChild(cardName);
+}
+
+
+
 const tiger = (doc) => {
     // Generate the card
     const cardOutline = document.createElement("div");
