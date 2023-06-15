@@ -3,19 +3,19 @@ console.log("Test");
 const image_links = [
     {
         name: "disciple1",
-        link: "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true"
+        link: "/images/disciple1.png"
     },
     {
         name: "disciple2",
-        link: "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true"
+        link: "/images/disciple2.png"
     },
     {
         name: "master1",
-        link: "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%201.jpg?raw=true"
+        link: "/images/sensei1.jpg"
     },
     {
         name: "master2",
-        link: "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%202.jpg?raw=true"
+        link: "/images/sensei2.jpg"
     }
 ];
 
@@ -68,12 +68,12 @@ const resetBoard = () => {
             // To differentiate both players' meeples, they have different images
             // See below. Passing variable does not work, hard-coding links for now
             if (i === 2) {
-                // let url = image_links[image_links.findIndex((element)=>element.name === "master1")].link;
-                masterImage.src = "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%201.jpg?raw=true";
+                let url = image_links[image_links.findIndex((element)=>element.name === "master1")].link;
+                masterImage.src = url;
             };
             if (i === 7) {
-                // let url = image_links[image_links.findIndex((element)=>element.name === "master2")].link;
-                masterImage.src = "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%202.jpg?raw=true";
+                let url = image_links[image_links.findIndex((element)=>element.name === "master2")].link;
+                masterImage.src = url;
             };
             // masterImage.setAttribute("src", `${url}`);
             // masterImage.src = url;
@@ -92,13 +92,13 @@ const resetBoard = () => {
             // Somehow using variable to define url does not work when passing url to img's src
             // commented out the array method & hard-coding for now
             if (i < 5) {
-                // let url = image_links[image_links.findIndex((element)=>element.name === "disciple1")].link;
-                // console.log(url); <== this returns the right link, but setAttribute didn't work
-                discipleImage.src = "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true";   
+                let url = image_links[image_links.findIndex((element)=>element.name === "disciple1")].link;
+                console.log(url); //<== this returns the right link, but setAttribute didn't work
+                discipleImage.src = url;
             };
             if (i >= 5) {
-                // let url = image_links[image_links.findIndex((element)=>element.name === "disciple2")].link;
-                discipleImage.src = "https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true";
+                let url = image_links[image_links.findIndex((element)=>element.name === "disciple2")].link;
+                discipleImage.src = url;
             };
             // discipleImage.setAttribute("src", `${url}`);
             discipleMeeple.appendChild(discipleImage);
@@ -156,7 +156,7 @@ const startGame = () => {
     for (let n of cardsInPlayArea) {
         n.addEventListener("click", (evt)=>{
             console.log("clicked this: ", evt.currentTarget);
-            document.querySelector(".cards").style.backgroundColor = "white";
+            
             document.querySelector(`#${n.id}`).style.backgroundColor = "gold";
             // Function to highlight current player's meeples
             activateMeeples(currentPlayer);
