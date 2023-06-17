@@ -1,3 +1,7 @@
+body {
+    align-items: center;
+}
+
 header {
     display: flex;
     flex-direction: column;
@@ -15,13 +19,23 @@ header > h2, p {
 .links {
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .links > div {
     width: 80px;
     margin: auto;
+    background-color: aliceblue;
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
     /* text-align: center; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 footer {
@@ -30,4 +44,20 @@ footer {
     color: black;
     font-size: 1em;
     text-align: center;
+}
+
+#start-button:hover {
+    cursor: pointer;
+}
+
+#quick-how-to:hover {
+    cursor: pointer;
+}
+
+.how-to-box {
+    background-color: white;
+    margin: 5px;
+    padding: 10px;
+    text-align: left;
+    border-radius: 15px;
 }

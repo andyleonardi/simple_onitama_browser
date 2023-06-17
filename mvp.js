@@ -38,6 +38,8 @@ const playersStats = [
     }
 ];
 
+const howToContainer = document.querySelector(".how-to-text");
+
 const holdP1 = document.getElementById("hold-1");
 const holdP2 = document.getElementById("hold-2");
 const playP1 = document.getElementById("play-1");
@@ -135,6 +137,14 @@ const resetBoard = () => {
     playerPositions(cardsInPlay[4], playP2);
 }
 
+const clearBoard = () => {
+    const allDisciples = document.querySelectorAll(".disciple-meeple");
+    const allMasters = document.querySelectorAll(".master-meeple");
+    const allCardsToRemove = document.querySelectorAll(".cards");
+    allDisciples.forEach((d) => d.remove());
+    allMasters.forEach((m) => m.remove());
+    allCardsToRemove.forEach((c) => c.remove());
+}
 
 // For each card in current player's area, add click listener, and
 // attach the clicked event info to pre-defined variables above
@@ -144,7 +154,6 @@ const gameStart = () => {
     resetBoard();
 
     // let gameState = "Start";
-    createNextButton();
     // while (gameState !== "End") {
         // console.log(currentPlayerId);
         
@@ -308,6 +317,7 @@ const moveAction = (event) => {
         })
         moveCards();
         currentPlayerId = nextPlayerId;
+        createNextButton();
         return waitForClick();
     }
     // if selected space is not empty & contains opponent's meeples
@@ -325,6 +335,7 @@ const moveAction = (event) => {
         checkWin();
         moveCards();
         currentPlayerId = nextPlayerId;
+        createNextButton();
         return waitForClick();
     }
 
@@ -359,6 +370,7 @@ const moveCards = () => {
 const waitForClick = () => {
     document.querySelector("#next-player").addEventListener("click", (event) => {
         console.log("next button clicked");
+        document.querySelector("#next-player").remove();
         gameTurn(currentPlayerId)
     })
 }
@@ -366,14 +378,64 @@ const waitForClick = () => {
 const checkWin = () => {
     if (playersMeeplesLife[0][0] === 0) {
         alert("player 2 Wins!");
+        clearBoard();
         return resetBoard();
     }
     else if (playersMeeplesLife[1][0] === 0) {
         alert("player 1 Wins!");
+        clearBoard();
         return resetBoard();
     }
     else {return false;}
 }
+
+const generateQuickHowTo = () => {
+    const howToBox = document.createElement("div");
+    howToBox.classList.add("how-to-box");
+    howToContainer.appendChild(howToBox);
+
+    const howToTextTitle = document.createElement("p");
+    howToTextTitle.textContent = "Onitama is a simple game of tactics that can be completed in 15 minutes";
+    howToBox.appendChild(howToTextTitle);
+    const howToTextList = document.createElement("ol");
+    howToBox.appendChild(howToTextList);
+    let howToTextList1 = document.createElement("li");
+    let howToTextList2 = document.createElement("li");
+    let howToTextList3 = document.createElement("li");
+    let howToTextList4 = document.createElement("li");
+    let howToTextList5 = document.createElement("li");
+    let howToTextList6 = document.createElement("li");
+    let howToTextList7 = document.createElement("li");
+
+    howToTextList1.innerText = "Select card in your play area (center) - each card will show you the possible moves";
+    howToTextList2.innerText = "You have two choices, and the other card in your holding area will be available in your next turn";
+    howToTextList3.innerText = "Select which disciples or master you want to move - where they can move depends on the card you selected";
+    howToTextList4.innerText = "Click on the eligible square to move your selected meeple there";
+    howToTextList5.innerText = "That's it! The card you selected will become available for your opponent in their future turns";
+    howToTextList6.innerText = "Click Next Player button once done, and it's the next player's turn";
+    howToTextList7.innerText = "Game ends when a player defeats the other player's Master";
+
+    howToTextList.appendChild(howToTextList1);
+    howToTextList.appendChild(howToTextList2);
+    howToTextList.appendChild(howToTextList3);
+    howToTextList.appendChild(howToTextList4);
+    howToTextList.appendChild(howToTextList5);
+    howToTextList.appendChild(howToTextList6);
+    howToTextList.appendChild(howToTextList7);
+}
+
+const howToButton = () => {
+    if (howToContainer.innerHTML === "") {
+        generateQuickHowTo();
+        return;
+    } else {
+        howToContainer.innerHTML = "";
+        return;
+    }
+}
+
+document.querySelector("#quick-how-to").addEventListener("click", howToButton);
+
 
 // resetBoard();
 gameStart();
