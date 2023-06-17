@@ -113,11 +113,6 @@ const resetBoard = () => {
     let startPlayer = allCards[allCards.findIndex((element)=>element.id===cardsInPlay[0])].start;
     currentPlayerId = startPlayer;
 
-    // Initialize all cards
-    const holdP1 = document.getElementById("hold-1");
-    const playP1 = document.getElementById("play-1");
-    const playP2 = document.getElementById("play-2");
-
     playerPositions(cardsInPlay[0], holdP1);
     playerPositions(cardsInPlay[1], playP1);
     playerPositions(cardsInPlay[2], playP1);
@@ -132,7 +127,9 @@ const resetBoard = () => {
 
 const gameStart = () => {
     resetBoard();
-    let gameState = "Start"
+
+    // let gameState = "Start";
+    createNextButton();
     // while (gameState !== "End") {
         // console.log(currentPlayerId);
         
@@ -164,6 +161,7 @@ const gameStart = () => {
 }
 
 let nextPlayerId = "";
+let selectedCardId = "";
 let selectedCardMoves = "";
 let cardsInPlayArea = [];
 let selectedMeepleId = "";
@@ -171,6 +169,14 @@ let selectedMeeplePosition = 0;
 let currentPlayerMeeplesId = [];
 let nextPlayerMeeplesId = [];
 let activeSpaces = [];
+
+const createNextButton = () => {
+    const rightSide = document.querySelector(".next-button");
+    const nextButton = document.createElement("div");
+    nextButton.setAttribute("id", "next-player");
+    nextButton.textContent = "Next Player";
+    rightSide.appendChild(nextButton);
+}
 
 const gameTurn = (playerId) => {
     // currentPlayerId = playerId;
@@ -229,7 +235,7 @@ const gameTurn = (playerId) => {
 }
 
 const selectCardAction = (event) => {
-    let selectedCardId = event.currentTarget.id;
+    selectedCardId = event.currentTarget.id;
     let selectedCardIndex = allCards.findIndex((card) => card.id===selectedCardId);
     if (currentPlayerId === "play-1") {selectedCardMoves = allCards[selectedCardIndex].moves};
     if (currentPlayerId === "play-2") {selectedCardMoves = allCards[selectedCardIndex].moves2};
@@ -257,7 +263,7 @@ const selectMeepleAction = (event) => {
 const activateSpace = () => {
     for (let move of selectedCardMoves) {
         let possibleSpace = selectedMeeplePosition + move[0] + (5 * move[1])
-        if (possibleSpace > 0) {
+        if (possibleSpace > 0 && possibleSpace < 26) {
             activeSpaces.push(possibleSpace);
         }
     }
@@ -278,31 +284,63 @@ const moveAction = (event) => {
 
     // If selected space is empty
     if (selectedSpace.innerHTML === "") {
-        
+        console.log("no enemy present");
         selectedSpace.appendChild(selectedMeeple);
         activeSpaces.forEach((space) => {
             document.getElementById(`${space}`).removeEventListener("click", moveAction);
         })
+        moveCards();
         currentPlayerId = nextPlayerId;
-        return;
+        return waitForClick();
     }
     // if selected space is not empty & contains opponent's meeples
     else if (nextPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
+        console.log("enemy present!");
         playersStats[nextPlayerId].meeples[nextPlayerMeeplesId.findIndex((element) => element === selectedSpace.firstChild.id)].life = 0;        
         selectedSpace.innerHTML = "";
         selectedSpace.appendChild(selectedMeeple);
         activeSpaces.forEach((space) => {
             document.getElementById(`${space}`).removeEventListener("click", moveAction);
         })
+        checkWin();
+        moveCards();
         currentPlayerId = nextPlayerId;
-        return;
+        return waitForClick();
     }
 
     // if selected space is not empty & contains own meeples
     else if (currentPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
+        console.log("hey that's friendly");
         // remove click event for itself
         document.getElementById(`${selectedSpaceId}`).removeEventListener("click", moveAction);
     }
+}
+
+const moveCards = () => {
+    console.log(currentPlayerId);
+    if (currentPlayerId === "play-1") {
+        document.querySelector(`#${selectedCardId}`).remove();
+        playerPositions(selectedCardId, holdP2);
+        const nextCard = holdP1.firstElementChild;
+        playP1.appendChild(nextCard);
+        // playerPositions(nextCard, playP1);
+        // nextCard.remove();
+    }
+    if (currentPlayerId === "play-2") {
+        document.querySelector(`#${selectedCardId}`).remove();
+        playerPositions(selectedCardId, holdP1);
+        const nextCard = holdP2.firstElementChild;
+        playP2.appendChild(nextCard);
+        // playerPositions(nextCard, playP2);
+        // nextCard.remove();
+    }
+}
+
+const waitForClick = () => {
+    document.querySelector("#next-player").addEventListener("click", (event) => {
+        console.log("next button clicked");
+        gameTurn(currentPlayerId)
+    })
 }
 
 const checkWin = () => {
@@ -310,11 +348,11 @@ const checkWin = () => {
     let masterIndexP2 = playersStats[1].meeples.findIndex((element)=>element.status==="master");
     if (playersStats[0].meeples[masterIndexP1].life === 0) {
         alert("player 2 Wins!");
-        return true;
+        return resetBoard();
     }
     else if (playersStats[1].meeples[masterIndexP2].life === 0) {
         alert("player 1 Wins!");
-        return true;
+        return resetBoard();
     }
     else {return false;}
 }

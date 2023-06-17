@@ -55,6 +55,9 @@
     height: 20px;
     background-color: bisque;
     border: 1px solid black;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .board-main {
