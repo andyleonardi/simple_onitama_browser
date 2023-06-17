@@ -43,6 +43,21 @@ const holdP2 = document.getElementById("hold-2");
 const playP1 = document.getElementById("play-1");
 const playP2 = document.getElementById("play-2");
 
+// console.log(playersStats[1].meeples[1].life);
+
+let player1MeeplesLife = [];
+for (let element of playersStats[0].meeples) {
+    player1MeeplesLife.push(element.life);
+}
+let player2MeeplesLife = [];
+for (let element of playersStats[1].meeples) {
+    player2MeeplesLife.push(element.life);
+}
+let playersMeeplesLife = [];
+playersMeeplesLife.push(player1MeeplesLife);
+playersMeeplesLife.push(player2MeeplesLife);
+// console.log(playersMeeplesLife);
+
 let currentPlayerId = "";
 
 const playerPositions = (id, doc) => {
@@ -161,12 +176,14 @@ const gameStart = () => {
 }
 
 let nextPlayerId = "";
+let nextPlayerIndex = 1;
 let selectedCardId = "";
 let selectedCardMoves = "";
 let cardsInPlayArea = [];
 let selectedMeepleId = "";
 let selectedMeeplePosition = 0;
 let currentPlayerMeeplesId = [];
+let nextPlayerMeeples = [];
 let nextPlayerMeeplesId = [];
 let activeSpaces = [];
 
@@ -182,13 +199,13 @@ const gameTurn = (playerId) => {
     // currentPlayerId = playerId;
     let currentPlayerIndex = playersStats.findIndex((element)=>element.player===playerId);
     let currentPlayerHoldId = playersStats[currentPlayerIndex].holder;
-    let nextPlayerIndex = playersStats.findIndex((element)=>element.player!==playerId);
+    nextPlayerIndex = playersStats.findIndex((element)=>element.player!==playerId);
     nextPlayerId = playersStats[nextPlayerIndex].player;
     let nextPlayerHoldId = playersStats[nextPlayerIndex].holder;
 
     // let selectedCardMoves = "";
 
-    let currentPlayerMeeples = playersStats[currentPlayerIndex].meeples;
+    let currentPlayerMeeples = playersStats[currentPlayerIndex].meeples.filter((element)=>element.life===1);
     currentPlayerMeeplesId = [];
     for (let meeple of currentPlayerMeeples) {
         currentPlayerMeeplesId.push(meeple.id);
@@ -296,7 +313,10 @@ const moveAction = (event) => {
     // if selected space is not empty & contains opponent's meeples
     else if (nextPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
         console.log("enemy present!");
-        playersStats[nextPlayerId].meeples[nextPlayerMeeplesId.findIndex((element) => element === selectedSpace.firstChild.id)].life = 0;        
+        let whichMeeple = nextPlayerMeeplesId.findIndex((element) => element === selectedSpace.firstChild.id);
+        // console.log(playersStats[nextPlayerIndex].meeples[whichMeeple].life);
+        playersStats[nextPlayerIndex].meeples[whichMeeple].life = 0
+        playersMeeplesLife[nextPlayerIndex][whichMeeple] = 0
         selectedSpace.innerHTML = "";
         selectedSpace.appendChild(selectedMeeple);
         activeSpaces.forEach((space) => {
@@ -344,13 +364,11 @@ const waitForClick = () => {
 }
 
 const checkWin = () => {
-    let masterIndexP1 = playersStats[0].meeples.findIndex((element)=>element.status==="master");
-    let masterIndexP2 = playersStats[1].meeples.findIndex((element)=>element.status==="master");
-    if (playersStats[0].meeples[masterIndexP1].life === 0) {
+    if (playersMeeplesLife[0][0] === 0) {
         alert("player 2 Wins!");
         return resetBoard();
     }
-    else if (playersStats[1].meeples[masterIndexP2].life === 0) {
+    else if (playersMeeplesLife[1][0] === 0) {
         alert("player 1 Wins!");
         return resetBoard();
     }
