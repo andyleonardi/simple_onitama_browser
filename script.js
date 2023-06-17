@@ -3,19 +3,19 @@ console.log("Test");
 const image_links = [
     {
         name: "disciple1",
-        link: "/images/disciple1.png"
+        link: "images/disciple1.png"
     },
     {
         name: "disciple2",
-        link: "/images/disciple2.png"
+        link: "images/disciple2.png"
     },
     {
         name: "master1",
-        link: "/images/sensei1.jpg"
+        link: "images/sensei1.jpg"
     },
     {
         name: "master2",
-        link: "/images/sensei2.jpg"
+        link: "images/sensei2.jpg"
     }
 ];
 
@@ -26,7 +26,8 @@ const playersStats = [
                   {id:"meeple-1", life:1, status: "disciple"},
                   {id:"meeple-2", life:1, status: "disciple"},
                   {id:"meeple-4", life:1, status: "disciple"},
-                  {id:"meeple-5", life:1, status: "disciple"}]
+                  {id:"meeple-5", life:1, status: "disciple"}],
+        holder: "hold-1"
     },
     {
         player: "play-2",
@@ -34,7 +35,8 @@ const playersStats = [
                   {id:"meeple-21", life:1, status: "disciple"},
                   {id:"meeple-22", life:1, status: "disciple"},
                   {id:"meeple-24", life:1, status: "disciple"},
-                  {id:"meeple-25", life:1, status: "disciple"}]
+                  {id:"meeple-25", life:1, status: "disciple"}],
+        holder: "hold-2"
     }
 ];
 
@@ -44,7 +46,9 @@ const playersStats = [
 // }
 
 let cardsInPlay = [];
-let startPlayer = "";
+// let startPlayer = "";
+let currentPlayer = "";
+let gameState = "Ongoing";
 
 // Function to fill the board with meeples
 const resetBoard = () => {
@@ -66,7 +70,6 @@ const resetBoard = () => {
             const masterImage = document.createElement("img"); // Insert image
             masterImage.classList.add("master-img"); // Add class to image
             // To differentiate both players' meeples, they have different images
-            // See below. Passing variable does not work, hard-coding links for now
             if (i === 2) {
                 let url = image_links[image_links.findIndex((element)=>element.name === "master1")].link;
                 masterImage.src = url;
@@ -75,8 +78,6 @@ const resetBoard = () => {
                 let url = image_links[image_links.findIndex((element)=>element.name === "master2")].link;
                 masterImage.src = url;
             };
-            // masterImage.setAttribute("src", `${url}`);
-            // masterImage.src = url;
             masterMeeple.appendChild(masterImage);
         } else { // For disciple spaces
             // Disciples are in squares with id 1, 2, 4, 5, 21, 22, 24, 25
@@ -89,11 +90,8 @@ const resetBoard = () => {
             const discipleImage = document.createElement("img");
             discipleImage.classList.add("disciple-img");
             // To differentiate both players' meeples, they have different images
-            // Somehow using variable to define url does not work when passing url to img's src
-            // commented out the array method & hard-coding for now
             if (i < 5) {
                 let url = image_links[image_links.findIndex((element)=>element.name === "disciple1")].link;
-                console.log(url); //<== this returns the right link, but setAttribute didn't work
                 discipleImage.src = url;
             };
             if (i >= 5) {
@@ -104,40 +102,14 @@ const resetBoard = () => {
             discipleMeeple.appendChild(discipleImage);
         }
     }
-}
 
-// Function to highlight clickable meeples & add event listener
-const activateBoard = (who) => {
-    // Get the index of the current player, so we can get the ids of the meeples
-    let playerIndex = playersStats.findIndex((element)=>element.player===who);
-    let remainingMeeples = playersStats[playerIndex].meeples.filter((element)=>element.life>0);
-    for (let e of remainingMeeples) {
-        document.querySelector(`#${e.id}`).style.backgroundColor = "gold";
-        document.querySelector(`#${e.id}`).addEventListener("click", (evt)=>{
-            // On click of one of the pawns, Run another function that does:
-                // Take the position of the clicked pawn
-                // Make an array of possible position, using the above formula.
-                // Let’s say the array is [17, 12, 19, 14]
-                // For each element in the array, document.querySelector the space with id = element
-                // Change the CSS property of those selected space, maybe just change the background color
-                // Add event listener, if user clicks on one of them, append the pawn there
-                // Update the position of the pawn, and remove the pawn from the original position.
-        })
-    }
-}
-
-const startGame = () => {
-    // Initialize the meeples to their starting location
-    resetBoard();
     // [TO DO] Randomly draw 5 cards from the deck, and put them in an array
     // Harcode cards for now
     let cardsInPlay = ["dragon", "tiger", "ox", "monkey", "cobra"];
     
-    // Use the first element in cardsInPlay to determine start player, but since cardsInPlay now contain functions,
-    // need to find a way to make it string
-    // In the meantime, hardcode [NBED]
-    startPlayer = allCards[allCards.findIndex((element)=>element.id===cardsInPlay[0])].start;
-    let currentPlayer = startPlayer;
+    // Use the first element in cardsInPlay to determine start player
+    let startPlayer = allCards[allCards.findIndex((element)=>element.id===cardsInPlay[0])].start;
+    currentPlayer = startPlayer;
 
     // Initialize all cards
     const holdP1 = document.getElementById("hold-1");
@@ -149,26 +121,34 @@ const startGame = () => {
     generateCard(cardsInPlay[2], playP1);
     generateCard(cardsInPlay[3], playP2);
     generateCard(cardsInPlay[4], playP2);
-
-    // Add click event listener on cards that are in current player's play area
-    const cardsInPlayArea = document.querySelectorAll(`#${currentPlayer} .cards`);
-    // console.log("selection: ", cardsInPlayArea[0]);
-    for (let n of cardsInPlayArea) {
-        n.addEventListener("click", (evt)=>{
-            console.log("clicked this: ", evt.currentTarget);
-            document.querySelector(`#${n.id}`).style.backgroundColor = "gold";
-            // Function to activate squares on the board for clicks
-            activateBoard(currentPlayer);
-            // For each of those meeples, add click event listener
-            
-            
-            // If player clicks the other card, return the function for the other card, which should work the same way as this
-        })
-    }
 }
 
-startGame();
+// const startGame = () => {
+//     const allCardsInPlay = document.querySelectorAll(".cards");
+//     // Add clickable class on cards that are in current player's play area
+    
+//     for (let c of allCardsInPlay) {
+//         const cardsInPlayArea = document.querySelectorAll(`#${currentPlayer} .cards`);
+//         cardsInPlayArea.forEach((card)=>card.classList.add("clickable"));
+//         const clickableCards = document.querySelectorAll(".clickable");
+//         for (let n of clickableCards) {
+//             activateCard(n, currentPlayer);
+//         }
+//         if (currentPlayer = "play-1") {currentPlayer = "play-2"}
+//         if (currentPlayer = "play-2") {currentPlayer = "play-1"}
+//     }
+// }
 
-// NOTE 
-// Stopped at toggling highlights. If user click another card, 
-// it should remove highlight the other card
+resetBoard();
+// startGame();
+// console.log(currentPlayer);
+
+const squares = document.querySelectorAll(".square");
+squares.forEach((square) => {
+    square.addEventListener("click", (event) => {
+        console.log("target ", event.target);
+        console.log("current target ", event.currentTarget);
+        console.log("ChildNode ", event.currentTarget.firstChild);
+        console.log("ChildNodeId ", event.currentTarget.firstChild.id);
+    })
+})

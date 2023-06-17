@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onitama Browser Ed</title>
     <script src="cards.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="mvp.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="board.css" />
     <link rel="stylesheet" href="cards.css" />
@@ -32,43 +33,7 @@
 
 <body>
     <div class="player-2-area player-row">
-        <div class="holding-box" id="hold-2">
-            <!-- <div class="cards" id="tiger">
-                <div class="top-card">
-                    <div class="card-img"></div>
-                    <div class="card-ability">
-                        <div class="card-square" id="card-1"></div>
-                        <div class="card-square" id="card-2"></div>
-                        <div class="card-square" id="card-3"></div>
-                        <div class="card-square" id="card-4"></div>
-                        <div class="card-square" id="card-5"></div>
-                        <div class="card-square" id="card-6"></div>
-                        <div class="card-square" id="card-7"></div>
-                        <div class="card-square" id="card-8"></div>
-                        <div class="card-square" id="card-9"></div>
-                        <div class="card-square" id="card-10"></div>
-                        <div class="card-square" id="card-11"></div>
-                        <div class="card-square" id="card-12"></div>
-                        <div class="card-square" id="card-13"></div>
-                        <div class="card-square" id="card-14"></div>
-                        <div class="card-square" id="card-15"></div>
-                        <div class="card-square" id="card-16"></div>
-                        <div class="card-square" id="card-17"></div>
-                        <div class="card-square" id="card-18"></div>
-                        <div class="card-square" id="card-19"></div>
-                        <div class="card-square" id="card-20"></div>
-                        <div class="card-square" id="card-21"></div>
-                        <div class="card-square" id="card-22"></div>
-                        <div class="card-square" id="card-23"></div>
-                        <div class="card-square" id="card-24"></div>
-                        <div class="card-square" id="card-25"></div>
-                    </div>
-                </div>
-                <div class="bottom-card">
-                    <p class="card-name">Tiger</p>
-                </div>
-            </div> -->
-        </div>
+        <div class="holding-box" id="hold-2"></div>
         <div class="play-area" id="play-2"></div>
         <div class="player-block blank-div"></div>
     </div>
@@ -76,157 +41,48 @@
         <div class="board-block blank-div"></div>
         <div class="board-main">
             <div class="row">
-                <div class="square" id="21">
-                    <!-- <div class="disciple-meeple" id="disciple-p2-1">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="22">
-                    <!-- <div class="disciple-meeple" id="disciple-p2-2">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="23">
-                    <!-- <div class="master-meeple" id="master-p2">
-                        <img class="master-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%202.jpg?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="24">
-                    <!-- <div class="disciple-meeple" id="disciple-p2-3">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="25">
-                    <!-- <div class="disciple-meeple" id="disciple-p2-4">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%202.png?raw=true">
-                    </div> -->
-                </div>
+                <div class="square" id="25"></div>
+                <div class="square" id="24"></div>
+                <div class="square" id="23"></div>
+                <div class="square" id="22"></div>
+                <div class="square" id="21"></div>
             </div>
             <div class="row">
-                <div class="square" id="16"></div>
-                <div class="square" id="17"></div>
-                <div class="square" id="18"></div>
-                <div class="square" id="19"></div>
                 <div class="square" id="20"></div>
+                <div class="square" id="19"></div>
+                <div class="square" id="18"></div>
+                <div class="square" id="17"></div>
+                <div class="square" id="16"></div>
             </div>
             <div class="row">
-                <div class="square" id="11"></div>
-                <div class="square" id="12"></div>
-                <div class="square" id="13"></div>
-                <div class="square" id="14"></div>
                 <div class="square" id="15"></div>
+                <div class="square" id="14"></div>
+                <div class="square" id="13"></div>
+                <div class="square" id="12"></div>
+                <div class="square" id="11"></div>
             </div>
             <div class="row">
-                <div class="square" id="6"></div>
-                <div class="square" id="7"></div>
-                <div class="square" id="8"></div>
-                <div class="square" id="9"></div>
                 <div class="square" id="10"></div>
+                <div class="square" id="9"></div>
+                <div class="square" id="8"></div>
+                <div class="square" id="7"></div>
+                <div class="square" id="6"></div>
             </div>
             <div class="row">
-                <div class="square" id="1">
-                    <!-- <div class="disciple-meeple" id="disciple-p1-1">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="2">
-                    <!-- <div class="disciple-meeple" id="disciple-p1-2">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="3">
-                    <!-- <div class="master-meeple" id="master-p1">
-                        <img class="master-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/sensei%201.jpg?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="4">
-                    <!-- <div class="disciple-meeple" id="disciple-p1-3">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true">
-                    </div> -->
-                </div>
-                <div class="square" id="5">
-                    <!-- <div class="disciple-meeple" id="disciple-p1-4">
-                        <img class="disciple-img" src="https://github.com/andyleonardi/simple_onitama_browser/blob/main/images/disciple%201.png?raw=true">
-                    </div> -->
-                </div>
+                <div class="square" id="5"></div>
+                <div class="square" id="4"></div>
+                <div class="square" id="3"></div>
+                <div class="square" id="2"></div>
+                <div class="square" id="1"></div>
             </div>
         </div>
-        <div class="board-block blank-div"></div>
+        <div class="board-block next-button">
+            <div id="next-button"></div>
+        </div>
     </div>
     <div class="player-1-area player-row">
         <div class="player-block blank-div"></div>
-        <div class="play-area" id="play-1">
-            <!-- <div class="cards" id="ox">
-                <div class="top-card">
-                    <div class="card-img"></div>
-                    <div class="card-ability">
-                        <div class="card-square" id="card-1"></div>
-                        <div class="card-square" id="card-2"></div>
-                        <div class="card-square" id="card-3"></div>
-                        <div class="card-square" id="card-4"></div>
-                        <div class="card-square" id="card-5"></div>
-                        <div class="card-square" id="card-6"></div>
-                        <div class="card-square" id="card-7"></div>
-                        <div class="card-square" id="card-8"></div>
-                        <div class="card-square" id="card-9"></div>
-                        <div class="card-square" id="card-10"></div>
-                        <div class="card-square" id="card-11"></div>
-                        <div class="card-square" id="card-12"></div>
-                        <div class="card-square" id="card-13"></div>
-                        <div class="card-square" id="card-14"></div>
-                        <div class="card-square" id="card-15"></div>
-                        <div class="card-square" id="card-16"></div>
-                        <div class="card-square" id="card-17"></div>
-                        <div class="card-square" id="card-18"></div>
-                        <div class="card-square" id="card-19"></div>
-                        <div class="card-square" id="card-20"></div>
-                        <div class="card-square" id="card-21"></div>
-                        <div class="card-square" id="card-22"></div>
-                        <div class="card-square" id="card-23"></div>
-                        <div class="card-square" id="card-24"></div>
-                        <div class="card-square" id="card-25"></div>
-                    </div>
-                </div>
-                <div class="bottom-card">
-                    <p class="card-name">Ox</p>
-                </div>
-            </div>
-            <div class="cards" id="Monkey">
-                <div class="top-card">
-                    <div class="card-img"></div>
-                    <div class="card-ability">
-                        <div class="card-square" id="card-1"></div>
-                        <div class="card-square" id="card-2"></div>
-                        <div class="card-square" id="card-3"></div>
-                        <div class="card-square" id="card-4"></div>
-                        <div class="card-square" id="card-5"></div>
-                        <div class="card-square" id="card-6"></div>
-                        <div class="card-square" id="card-7"></div>
-                        <div class="card-square" id="card-8"></div>
-                        <div class="card-square" id="card-9"></div>
-                        <div class="card-square" id="card-10"></div>
-                        <div class="card-square" id="card-11"></div>
-                        <div class="card-square" id="card-12"></div>
-                        <div class="card-square" id="card-13"></div>
-                        <div class="card-square" id="card-14"></div>
-                        <div class="card-square" id="card-15"></div>
-                        <div class="card-square" id="card-16"></div>
-                        <div class="card-square" id="card-17"></div>
-                        <div class="card-square" id="card-18"></div>
-                        <div class="card-square" id="card-19"></div>
-                        <div class="card-square" id="card-20"></div>
-                        <div class="card-square" id="card-21"></div>
-                        <div class="card-square" id="card-22"></div>
-                        <div class="card-square" id="card-23"></div>
-                        <div class="card-square" id="card-24"></div>
-                        <div class="card-square" id="card-25"></div>
-                    </div>
-                </div>
-                <div class="bottom-card">
-                    <p class="card-name">Monkey</p>
-                </div>
-            </div> -->
-        </div>
+        <div class="play-area" id="play-1"></div>
         <div class="holding-box" id="hold-1"></div>
     </div>
 </body>

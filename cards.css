@@ -51,3 +51,7 @@
 #tiger #card-3 {
     background-color: gray;
 } */
+
+.active-card {
+    background-color: gold;
+}
