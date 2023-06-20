@@ -182,6 +182,9 @@ const generateMeeples = () => {
 
 // Function that fills the board to start the game
 const resetBoard = () => {
+    // Initialize player stats
+    playersStats = initializePlayerStats();
+    
     // Generate the meeples
     generateMeeples();
 

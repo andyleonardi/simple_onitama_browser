@@ -80,6 +80,34 @@
     padding: 2px;
 }
 
+.log-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+}
+
+#scoreboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.score-track {
+    width: 70px;
+}
+
+.player-score {
+    border: 1px solid red;
+    text-align: center;
+    margin: 2px;
+    width: 1em;
+}
+
+#playlog {
+    padding-top: 40px;
+}
+
 .next-button {
     display: flex;
     justify-content: center;

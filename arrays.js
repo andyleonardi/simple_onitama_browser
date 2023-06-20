@@ -27,27 +27,30 @@ const meepleImage = [
 // Every player has 1 Master & 4 Disciples, and each has their own play area and hold area (for cards)
 // To determine victory and to track how many disciples are left, we store "life". If life = 0, the disciple or master is gone
 
-// Store player stats in an array
-const playersStats = [
-    {
-        player: "play-1",
-        meeples: [{id:"meeple-3", life:1, status: "master"},
-                  {id:"meeple-1", life:1, status: "disciple"},
-                  {id:"meeple-2", life:1, status: "disciple"},
-                  {id:"meeple-4", life:1, status: "disciple"},
-                  {id:"meeple-5", life:1, status: "disciple"}],
-        holder: "hold-1"
-    },
-    {
-        player: "play-2",
-        meeples: [{id:"meeple-23", life:1, status: "master"},
-                  {id:"meeple-21", life:1, status: "disciple"},
-                  {id:"meeple-22", life:1, status: "disciple"},
-                  {id:"meeple-24", life:1, status: "disciple"},
-                  {id:"meeple-25", life:1, status: "disciple"}],
-        holder: "hold-2"
-    }
-];
+// Function to store player stats in an array
+initializePlayerStats = () => {
+    const playersStats = [
+        {
+            player: "play-1",
+            meeples: [{id:"meeple-3", life:1, status: "master"},
+                    {id:"meeple-1", life:1, status: "disciple"},
+                    {id:"meeple-2", life:1, status: "disciple"},
+                    {id:"meeple-4", life:1, status: "disciple"},
+                    {id:"meeple-5", life:1, status: "disciple"}],
+            holder: "hold-1"
+        },
+        {
+            player: "play-2",
+            meeples: [{id:"meeple-23", life:1, status: "master"},
+                    {id:"meeple-21", life:1, status: "disciple"},
+                    {id:"meeple-22", life:1, status: "disciple"},
+                    {id:"meeple-24", life:1, status: "disciple"},
+                    {id:"meeple-25", life:1, status: "disciple"}],
+            holder: "hold-2"
+        }
+    ];
+    return playersStats;
+}
 /////// ########    ########    ########    ######## ///////
 
 

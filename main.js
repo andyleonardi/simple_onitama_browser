@@ -52,6 +52,7 @@ const generateQuickHowTo = () => {
     howToTextList.appendChild(howToTextList7);
 }
 
+let playersStats = [];
 let currentPlayerId = "";
 let nextPlayerId = "";
 let nextPlayerIndex = 1;
@@ -75,6 +76,15 @@ const gameStart = () => {
     gameTurn(currentPlayerId);
 }
 
+// Initialize players' score
+const play1ScoreTracker = document.querySelector("#play-1-score");
+const play2ScoreTracker = document.querySelector("#play-2-score");
+
+let play1Score = 0;
+let play2Score = 0;
+
+// Initialize log text
+const logText = document.querySelector("#playlog");
 
 // Listen to click of the how-to button
 document.querySelector("#quick-how-to").addEventListener("click", howToButton);

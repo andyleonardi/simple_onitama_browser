@@ -21,6 +21,10 @@ const gameTurn = (playerId) => {
     nextPlayerId = playersStats[nextPlayerIndex].player;
     let nextPlayerHoldId = playersStats[nextPlayerIndex].holder;
 
+    // Log whose turn is it
+    if (currentPlayerIndex === 0) {logText.textContent = "Player 1's Turn";}
+    if (currentPlayerIndex === 1) {logText.textContent = "Player 2's Turn";}
+
     let currentPlayerMeeples = playersStats[currentPlayerIndex].meeples.filter((element)=>element.life===1);
     currentPlayerMeeplesId = [];
     for (let meeple of currentPlayerMeeples) {
@@ -126,7 +130,7 @@ const moveAction = (event) => {
         // Update that meeple's life to 0
         playersStats[nextPlayerIndex].meeples[whichMeeple].life = 0
         // For victory condition check
-        playersMeeplesLife[nextPlayerIndex][whichMeeple] = 0
+        // playersMeeplesLife[nextPlayerIndex][whichMeeple] = 0
         // Remove the opponent's meeple HTML element
         selectedSpace.innerHTML = "";
         // Move selected meeple to this new space
@@ -193,28 +197,34 @@ const createNextButton = () => {
 }
 
 // Store all meeples' life in an array
-let player1MeeplesLife = [];
-for (let element of playersStats[0].meeples) {
-    player1MeeplesLife.push(element.life);
-}
-let player2MeeplesLife = [];
-for (let element of playersStats[1].meeples) {
-    player2MeeplesLife.push(element.life);
-}
-let playersMeeplesLife = [];
-playersMeeplesLife.push(player1MeeplesLife);
-playersMeeplesLife.push(player2MeeplesLife);
+// let player1MeeplesLife = [];
+// for (let element of playersStats[0].meeples) {
+//     player1MeeplesLife.push(element.life);
+// }
+// let player2MeeplesLife = [];
+// for (let element of playersStats[1].meeples) {
+//     player2MeeplesLife.push(element.life);
+// }
+// let playersMeeplesLife = [];
+// playersMeeplesLife.push(player1MeeplesLife);
+// playersMeeplesLife.push(player2MeeplesLife);
 // playersMeeplesLife will be an array of length 2, one for P1, one for P2, and each element
 // is an array of 5, with array[0] being the Master's life
 
 // Function to check if a player's Master is removed, because that will trigger game end
 const checkWin = () => {
-    if (playersMeeplesLife[0][0] === 0) {
+    // if (playersMeeplesLife[0][0] === 0) {
+    if (playersStats[0].meeples[0].life === 0) {
         alert("player 2 Wins!"); // throws alert for the winner
+        play2Score = play2Score + 1;
+        play2ScoreTracker.textContent = play2Score;
         return true;
     }
-    else if (playersMeeplesLife[1][0] === 0) {
+    // else if (playersMeeplesLife[1][0] === 0) {
+    else if (playersStats[1].meeples[0].life === 0) {
         alert("player 1 Wins!");
+        play1Score = play1Score + 1;
+        play1ScoreTracker.textContent = play1Score;
         return true;
     }
     else {return false;} // do nothing
