@@ -129,7 +129,7 @@ const playerPositions = (id, doc) => {
 // Function to generate meeples in their starting positions
 const generateMeeples = () => {
     // Define starting spaces
-    const startPosition = [1, 2, 3, 4, 5, 21, 22, 23, 24, 25];
+    const startPosition = [11, 12, 13, 14, 15, 51, 52, 53, 54, 55];
     let url = "";
     
     // In each of the starting position, insert meeples

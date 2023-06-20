@@ -56,24 +56,47 @@ const gameTurn = (playerId) => {
 
 // Function to store selected card
 const selectCardAction = (event) => {
+    // Need to remove previously highlighted card
+    const prevActiveCard = document.querySelector(".active-card");
+    // console.log("previous card ", prevActiveCard);
+    if (prevActiveCard !== null) {prevActiveCard.classList.remove("active-card")};
+    
     selectedCardId = event.currentTarget.id;
+    // console.log("selected card ", selectedCardId);
+    event.currentTarget.classList.add("active-card");
     let selectedCardIndex = allCards.findIndex((card) => card.id===selectedCardId);
     if (currentPlayerId === "play-1") {selectedCardMoves = allCards[selectedCardIndex].moves};
     if (currentPlayerId === "play-2") {selectedCardMoves = allCards[selectedCardIndex].moves2};
-    console.log(selectedCardMoves);
-    cardsInPlayArea.forEach((card) => {
-        card.removeEventListener("click", selectCardAction);
-    })
+    // console.log(selectedCardMoves);
+    // Since we want players to be able to change their card selection, I shifted the removeEventListener part to meeple click listener
+    // What this means is, players can change card selection until they click on a meeple. That's when they lock in their choice
+    // cardsInPlayArea.forEach((card) => {
+    //     card.removeEventListener("click", selectCardAction);
+    // })
 }
 
 // Function to store selected meeple, its location, its possible moves and then invoke the moveAction
 const selectMeepleAction = (event) => {
-    selectedMeepleId = event.currentTarget.id;
-    selectedMeeplePosition = Number(event.currentTarget.parentNode.id);
-    console.log("selected ", selectedMeepleId, " and its position is ", selectedMeeplePosition)
-    currentPlayerMeeplesId.forEach((meep) => {
-        document.getElementById(`${meep}`).removeEventListener("click", selectMeepleAction);
+    // Remove click listener from card once a meeple is selected
+    cardsInPlayArea.forEach((card) => {
+        card.removeEventListener("click", selectCardAction);
     })
+
+    // We want to remove the highlight on previously selected meeple
+    const prevActiveMeeple = document.getElementById(`${selectedMeepleId}`);
+    // Remove the highlight on previous active spaces
+    document.querySelectorAll(".square").forEach((square)=>square.classList.remove("activated"));
+    // console.log("previous meeple ", prevActiveMeeple);
+    if (prevActiveMeeple !== null) {prevActiveMeeple.classList.remove("activated")};
+
+    selectedMeepleId = event.currentTarget.id;
+    event.currentTarget.classList.add("activated");
+    selectedMeeplePosition = Number(event.currentTarget.parentNode.id);
+    // console.log("selected ", selectedMeepleId, " and its position is ", selectedMeeplePosition)
+    // Similarly to card selection above, we want players to be able to make changes on their meeple selection
+    // currentPlayerMeeplesId.forEach((meep) => {
+    //     document.getElementById(`${meep}`).removeEventListener("click", selectMeepleAction);
+    // })
     // Get the possible spaces based on the updated variables
     activeSpaces = [];
     activateSpace(); 
@@ -84,22 +107,37 @@ const selectMeepleAction = (event) => {
 const activateSpace = () => {
     // First get the eligible spaces array
     for (let move of selectedCardMoves) {
-        let possibleSpace = selectedMeeplePosition + move[0] + (5 * move[1])
-        if (possibleSpace > 0 && possibleSpace < 26) {
-            activeSpaces.push(possibleSpace);
+        let possibleSpaceId = selectedMeeplePosition + move[0] + (10 * move[1]);
+        let possibleSpace = document.getElementById(`${possibleSpaceId}`);
+        if (allSquaresId.includes(possibleSpaceId) === true) {
+            if (possibleSpace.innerHTML !== "") {
+                if (currentPlayerMeeplesId.includes(possibleSpace.firstChild.id) === false) {
+                    activeSpaces.push(possibleSpaceId);
+                }
+            } else {activeSpaces.push(possibleSpaceId);}
         }
     }
     
     // For each activeSpaces, add click listener that moves selected meeple to that new space
     console.log("active spaces selected: ", activeSpaces);
     activeSpaces.forEach((space) => {
-        console.log("space", document.getElementById(`${space}`));
+        // console.log("space", document.getElementById(`${space}`));
+        // Highlight all the eligible spaces
+        document.getElementById(`${space}`).classList.add("activated");
         document.getElementById(`${space}`).addEventListener("click", moveAction);
     })
 }
 
 // Function that will move meeple around and check victory condition
 const moveAction = (event) => {
+    // Remove click listener on other meeples once player select where to move. The move is final!
+    currentPlayerMeeplesId.forEach((meep) => {
+        document.getElementById(`${meep}`).removeEventListener("click", selectMeepleAction);
+    })
+    
+    // Remove all highlighted things
+    document.querySelectorAll(".activated").forEach((active)=>active.classList.remove("activated"));
+
     // Store the selected space in variables
     let selectedSpaceId = event.currentTarget.id;
     let selectedSpace = event.currentTarget;

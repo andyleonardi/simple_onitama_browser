@@ -1,6 +1,13 @@
 // Main JS file to start game
 
 
+// All squares id
+const allSquaresId = [11, 12, 13, 14, 15, 
+                      21, 22, 23, 24, 25,
+                      31, 32, 33, 34, 35,
+                      41, 42, 43, 44, 45,
+                      51, 52, 53, 54, 55];
+
 // For how-to box
 const howToContainer = document.querySelector(".how-to-text");
 

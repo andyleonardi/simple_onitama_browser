@@ -32,20 +32,20 @@ initializePlayerStats = () => {
     const playersStats = [
         {
             player: "play-1",
-            meeples: [{id:"meeple-3", life:1, status: "master"},
-                    {id:"meeple-1", life:1, status: "disciple"},
-                    {id:"meeple-2", life:1, status: "disciple"},
-                    {id:"meeple-4", life:1, status: "disciple"},
-                    {id:"meeple-5", life:1, status: "disciple"}],
+            meeples: [{id:"meeple-13", life:1, status: "master"},
+                    {id:"meeple-11", life:1, status: "disciple"},
+                    {id:"meeple-12", life:1, status: "disciple"},
+                    {id:"meeple-14", life:1, status: "disciple"},
+                    {id:"meeple-15", life:1, status: "disciple"}],
             holder: "hold-1"
         },
         {
             player: "play-2",
-            meeples: [{id:"meeple-23", life:1, status: "master"},
-                    {id:"meeple-21", life:1, status: "disciple"},
-                    {id:"meeple-22", life:1, status: "disciple"},
-                    {id:"meeple-24", life:1, status: "disciple"},
-                    {id:"meeple-25", life:1, status: "disciple"}],
+            meeples: [{id:"meeple-53", life:1, status: "master"},
+                    {id:"meeple-51", life:1, status: "disciple"},
+                    {id:"meeple-52", life:1, status: "disciple"},
+                    {id:"meeple-54", life:1, status: "disciple"},
+                    {id:"meeple-55", life:1, status: "disciple"}],
             holder: "hold-2"
         }
     ];
@@ -65,6 +65,17 @@ initializePlayerStats = () => {
 // 10 |  9 |  8 |  7 |  6
 // ----------------------
 //  5 |  4 |  3 |  2 |  1
+// ----------------------
+
+// 55 | 54 | 53 | 52 | 51
+// ----------------------
+// 45 | 44 | 43 | 42 | 41
+// ----------------------
+// 35 | 34 | 33 | 32 | 31
+// ----------------------
+// 25 | 24 | 23 | 22 | 21
+// ----------------------
+// 15 | 14 | 13 | 12 | 11
 // ----------------------
 
 
