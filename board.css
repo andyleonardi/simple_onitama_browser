@@ -1,3 +1,36 @@
+.play-area-graphic {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 2em;
+    justify-content: center;
+    margin: auto;
+}
+
+.hold-area-text {
+    display: flex;
+    width: 120px;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    color: blue;
+    align-items: center;
+}
+
+.play-area-text {
+    display: flex;
+    width: 400px;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    color: blue;
+    align-items: center;
+}
+
+.blank-div-text {
+    width: 120px;
+}
+
 .player-row {
     display: flex;
     flex-direction: row;

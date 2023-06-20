@@ -47,17 +47,7 @@ const playP2 = document.getElementById("play-2");
 
 // console.log(playersStats[1].meeples[1].life);
 
-let player1MeeplesLife = [];
-for (let element of playersStats[0].meeples) {
-    player1MeeplesLife.push(element.life);
-}
-let player2MeeplesLife = [];
-for (let element of playersStats[1].meeples) {
-    player2MeeplesLife.push(element.life);
-}
-let playersMeeplesLife = [];
-playersMeeplesLife.push(player1MeeplesLife);
-playersMeeplesLife.push(player2MeeplesLife);
+
 // console.log(playersMeeplesLife);
 
 let currentPlayerId = "";
@@ -374,6 +364,18 @@ const waitForClick = () => {
         gameTurn(currentPlayerId)
     })
 }
+
+let player1MeeplesLife = [];
+for (let element of playersStats[0].meeples) {
+    player1MeeplesLife.push(element.life);
+}
+let player2MeeplesLife = [];
+for (let element of playersStats[1].meeples) {
+    player2MeeplesLife.push(element.life);
+}
+let playersMeeplesLife = [];
+playersMeeplesLife.push(player1MeeplesLife);
+playersMeeplesLife.push(player2MeeplesLife);
 
 const checkWin = () => {
     if (playersMeeplesLife[0][0] === 0) {

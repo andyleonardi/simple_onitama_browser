@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onitama Browser Ed</title>
-    <script src="cards.js" defer></script>
-    <script src="mvp.js" defer></script>
-    <!-- <script src="script.js" defer></script> -->
+    <title>Onitama Browser Ed</title>    
+    <script src="main.js" defer></script>
+    <script src="arrays.js" defer></script>
+    <script src="initializer.js" defer></script>
+    <script src="turn.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="board.css" />
     <link rel="stylesheet" href="cards.css" />
@@ -39,6 +40,11 @@
 </header>
 
 <body>
+    <div class="play-area-graphic">
+        <div class="hold-area-text"><p>P2 Hold</p></div>
+        <div class="play-area-text"><p>P2 Play Area</p></div>
+        <div class="blank-div-text"></div>
+    </div>
     <div class="player-2-area player-row">
         <div class="holding-box" id="hold-2"></div>
         <div class="play-area" id="play-2"></div>
@@ -91,6 +97,11 @@
         <div class="player-block blank-div"></div>
         <div class="play-area" id="play-1"></div>
         <div class="holding-box" id="hold-1"></div>
+    </div>
+    <div class="play-area-graphic">
+        <div class="blank-div-text"></div>
+        <div class="play-area-text"><p>P1 Play Area</p></div>
+        <div class="hold-area-text"><p>P1 Hold</p></div>
     </div>
 </body>
 
