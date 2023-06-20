@@ -62,6 +62,7 @@ const selectCardAction = (event) => {
     if (prevActiveCard !== null) {prevActiveCard.classList.remove("active-card")};
     
     selectedCardId = event.currentTarget.id;
+    logText.textContent = `${selectedCardId} selected`;
     // console.log("selected card ", selectedCardId);
     event.currentTarget.classList.add("active-card");
     let selectedCardIndex = allCards.findIndex((card) => card.id===selectedCardId);
@@ -90,6 +91,7 @@ const selectMeepleAction = (event) => {
     if (prevActiveMeeple !== null) {prevActiveMeeple.classList.remove("activated")};
 
     selectedMeepleId = event.currentTarget.id;
+    logText.textContent = `${selectedCardId} selected, ${selectedMeepleId} selected`;
     event.currentTarget.classList.add("activated");
     selectedMeeplePosition = Number(event.currentTarget.parentNode.id);
     // console.log("selected ", selectedMeepleId, " and its position is ", selectedMeeplePosition)
@@ -146,7 +148,8 @@ const moveAction = (event) => {
 
     // If selected space is empty
     if (selectedSpace.innerHTML === "") {
-        console.log("no opponent present");
+        // console.log("no opponent present");
+        logText.textContent = `No opponent present, ${selectedMeepleId} moves to space ${selectedSpaceId}`;
         // directly append the selected meeple html element to the new space
         selectedSpace.appendChild(selectedMeeple);
         activeSpaces.forEach((space) => {
@@ -162,7 +165,8 @@ const moveAction = (event) => {
 
     // if selected space is not empty & contains opponent's meeples
     else if (nextPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
-        console.log("opponent present!");
+        // console.log("opponent present!");
+        logText.textContent = `Opponent present, ${selectedMeepleId} defeats opponent and moves to ${selectedSpaceId}`;
         // Check which of opponent's meeples is present
         let whichMeeple = nextPlayerMeeplesId.findIndex((element) => element === selectedSpace.firstChild.id);
         // Update that meeple's life to 0
@@ -188,7 +192,8 @@ const moveAction = (event) => {
 
     // if selected space is not empty & contains own meeples
     else if (currentPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
-        console.log("hey, that's a friendly");
+        // console.log("hey, that's a friendly");
+        logText.textContent = "Hey, that's yours!";
         // remove click event for itself & do nothing else
         document.getElementById(`${selectedSpaceId}`).removeEventListener("click", moveAction);
     }
@@ -254,6 +259,7 @@ const checkWin = () => {
     // if (playersMeeplesLife[0][0] === 0) {
     if (playersStats[0].meeples[0].life === 0) {
         alert("player 2 Wins!"); // throws alert for the winner
+        logText.textContent = "Player 2 Wins";
         play2Score = play2Score + 1;
         play2ScoreTracker.textContent = play2Score;
         return true;
@@ -261,6 +267,7 @@ const checkWin = () => {
     // else if (playersMeeplesLife[1][0] === 0) {
     else if (playersStats[1].meeples[0].life === 0) {
         alert("player 1 Wins!");
+        logText.textContent = "Player 1 Wins";
         play1Score = play1Score + 1;
         play1ScoreTracker.textContent = play1Score;
         return true;
