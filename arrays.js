@@ -128,6 +128,95 @@ const allCards = [
         moves2: [[-1,0],[1,-1],[1,1]],
         name: "Cobra",
         start: "play-1"
+    },
+    // Above 5 cards were what was used in MVP, below are the other 11 cards available in the game
+    {
+        id: "crab",
+        image: "images/cobra.jpeg",
+        moves: [[2,0],[-2,0],[0,1]],
+        moves2: [[-2,0],[2,0],[0,-1]],
+        name: "Crab",
+        start: "play-2"
+    },
+    {
+        id: "crane",
+        image: "images/cobra.jpeg",
+        moves: [[1,-1],[-1,-1],[0,1]],
+        moves2: [[-1,1],[1,1],[0,-1]],
+        name: "Crane",
+        start: "play-2"
+    },
+    {
+        id: "elephant",
+        image: "images/cobra.jpeg",
+        moves: [[1,0],[-1,0],[1,1],[-1,1]],
+        moves2: [[-1,0],[1,0],[-1,-1],[1, -1]],
+        name: "Elephant",
+        start: "play-1"
+    },
+    {
+        id: "mantis",
+        image: "images/cobra.jpeg",
+        moves: [[1,1],[-1,1],[0,-1]],
+        moves2: [[-1,-1],[1,-1],[0,1]],
+        name: "Mantis",
+        start: "play-1"
+    },
+    {
+        id: "boar",
+        image: "images/cobra.jpeg",
+        moves: [[1,0],[-1,0],[0,1]],
+        moves2: [[-1,0],[1,0],[0,-1]],
+        name: "Boar",
+        start: "play-1"
+    },
+    {
+        id: "frog",
+        image: "images/cobra.jpeg",
+        moves: [[2,0],[1,1],[-1,-1]],
+        moves2: [[-2,0],[-1,-1],[1,1]],
+        name: "Frog",
+        start: "play-1"
+    },
+    {
+        id: "goose",
+        image: "images/cobra.jpeg",
+        moves: [[1,0],[-1,0],[-1,-1],[1,1]],
+        moves2: [[-1,0],[1,0],[1,1],[-1,-1]],
+        name: "Goose",
+        start: "play-2"
+    },
+    {
+        id: "horse",
+        image: "images/cobra.jpeg",
+        moves: [[1,0],[0,1],[0,-1]],
+        moves2: [[-1,0],[0,-1],[0,1]],
+        name: "Horse",
+        start: "play-1"
+    },
+    {
+        id: "eel",
+        image: "images/cobra.jpeg",
+        moves: [[1,1],[1,-1],[-1,0]],
+        moves2: [[-1,-1],[-1,1],[1,0]],
+        name: "Eel",
+        start: "play-2"
+    },
+    {
+        id: "rabbit",
+        image: "images/cobra.jpeg",
+        moves: [[1,-1],[-1,1],[-2,0]],
+        moves2: [[-1,1],[1,-1],[2,0]],
+        name: "Rabbit",
+        start: "play-2"
+    },
+    {
+        id: "rooster",
+        image: "images/cobra.jpeg",
+        moves: [[1,0],[-1,0],[1,-1],[-1,1]],
+        moves2: [[-1,0],[1,0],[-1,1],[1,-1]],
+        name: "Rooster",
+        start: "play-1"
     }
 ];
 /////// ########    ########    ########    ######## ///////

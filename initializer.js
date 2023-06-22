@@ -180,6 +180,30 @@ const generateMeeples = () => {
     }
 }
 
+// Function to shuffle all cards (16 of them) and draw 5 to use for a game
+const shuffleCards = (cardsArr) => {
+    let cardsId = [];  // Store the card id to a temp variable
+    cardsArr.forEach((card) => cardsId.push(card.id));
+
+    console.log(cardsId);
+    
+    // shuffle the cards
+    for (let i = cardsId.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * i);
+        let temp = cardsId[i];
+        cardsId[i] = cardsId[j];
+        cardsId[j] = temp;
+    }
+
+    let shuffledDraw = [];
+
+    for (let k = 0; k < 5; k++) {
+        shuffledDraw.push(cardsId[k]);
+    }
+
+    return shuffledDraw;
+}
+
 // Function that fills the board to start the game
 const resetBoard = () => {
     // Initialize player stats
@@ -189,16 +213,23 @@ const resetBoard = () => {
     generateMeeples();
 
     // Generate the cards for a new game
-    // [TO DO] Randomly draw 5 cards from the deck, and put them in an array
-    // Harcode cards for now
-    let cardsInPlay = ["dragon", "tiger", "ox", "monkey", "cobra"];
+    // Shuffle and draw 5 cards
+    // and then store the 5 random cards in cardsInPlay
+    let cardsInPlay = shuffleCards(allCards);  //["dragon", "tiger", "ox", "monkey", "cobra"];
+    console.log(cardsInPlay);
     
     // Use the first element in cardsInPlay to determine start player
     let startPlayer = allCards[allCards.findIndex((element)=>element.id===cardsInPlay[0])].start;
     currentPlayerId = startPlayer; // Update currentPlayerId to be start player
 
     // Generate the cards
-    playerPositions(cardsInPlay[0], holdP1);
+    if (startPlayer === "play-1") {
+        playerPositions(cardsInPlay[0], holdP1);
+    }
+    if (startPlayer === "play-2") {
+        playerPositions(cardsInPlay[0], holdP2);
+    }
+    
     playerPositions(cardsInPlay[1], playP1);
     playerPositions(cardsInPlay[2], playP1);
     playerPositions(cardsInPlay[3], playP2);
