@@ -155,6 +155,8 @@ const moveAction = (event) => {
         activeSpaces.forEach((space) => {
             document.getElementById(`${space}`).removeEventListener("click", moveAction);
         })
+        // Check if the master meeple is in opponent's temple space
+        if (checkWin() === true) {return;};
         // Before moving on to the next player, need to move selected cards to opponent's hold area
         moveCards();
         // Change current player
@@ -256,10 +258,12 @@ const createNextButton = () => {
 
 // Function to check if a player's Master is removed, because that will trigger game end
 const checkWin = () => {
+    // First win condition is when one player's master has been defeated
+    
     // if (playersMeeplesLife[0][0] === 0) {
     if (playersStats[0].meeples[0].life === 0) {
         alert("player 2 Wins!"); // throws alert for the winner
-        logText.textContent = "Player 2 Wins";
+        logText.textContent = "Player 2 Wins with the Way of the Stone";
         play2Score = play2Score + 1;
         play2ScoreTracker.textContent = play2Score;
         return true;
@@ -267,10 +271,34 @@ const checkWin = () => {
     // else if (playersMeeplesLife[1][0] === 0) {
     else if (playersStats[1].meeples[0].life === 0) {
         alert("player 1 Wins!");
-        logText.textContent = "Player 1 Wins";
+        logText.textContent = "Player 1 Wins with the Way of the Stone";
         play1Score = play1Score + 1;
         play1ScoreTracker.textContent = play1Score;
         return true;
     }
+
+    // Second win condition is when one player's master moved into the opponent's temple
+    // temple here means center space of their starting row (i.e. where their master started)
+
+    else if (templeSpaceP1.firstChild !== null) {
+        if (templeSpaceP1.firstChild.id === "meeple-53") {
+            alert("player 2 Wins!"); // throws alert for the winner
+            logText.textContent = "Player 2 Wins with the Way of the Stream";
+            play2Score = play2Score + 1;
+            play2ScoreTracker.textContent = play2Score;
+            return true;
+        }
+    }
+
+    else if (templeSpaceP2.firstChild !== null) {
+        if (templeSpaceP2.firstChild.id === "meeple-13") {
+            alert("player 1 Wins!");
+            logText.textContent = "Player 1 Wins with the Way of the Stream";
+            play1Score = play1Score + 1;
+            play1ScoreTracker.textContent = play1Score;
+            return true;
+        }
+    }
+
     else {return false;} // do nothing
 }

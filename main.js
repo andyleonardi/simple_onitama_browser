@@ -73,6 +73,9 @@ let nextPlayerMeeples = [];
 let nextPlayerMeeplesId = [];
 let activeSpaces = [];
 
+const templeSpaceP1 = document.getElementById("13");
+const templeSpaceP2 = document.getElementById("53");
+
 // Define the function gameStart
 const gameStart = () => {
     // First clear the board
