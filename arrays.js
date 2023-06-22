@@ -132,7 +132,7 @@ const allCards = [
     // Above 5 cards were what was used in MVP, below are the other 11 cards available in the game
     {
         id: "crab",
-        image: "images/cobra.jpeg",
+        image: "images/crab.jpeg",
         moves: [[2,0],[-2,0],[0,1]],
         moves2: [[-2,0],[2,0],[0,-1]],
         name: "Crab",
@@ -140,7 +140,7 @@ const allCards = [
     },
     {
         id: "crane",
-        image: "images/cobra.jpeg",
+        image: "images/crane.jpeg",
         moves: [[1,-1],[-1,-1],[0,1]],
         moves2: [[-1,1],[1,1],[0,-1]],
         name: "Crane",
@@ -148,7 +148,7 @@ const allCards = [
     },
     {
         id: "elephant",
-        image: "images/cobra.jpeg",
+        image: "images/elephant.jpeg",
         moves: [[1,0],[-1,0],[1,1],[-1,1]],
         moves2: [[-1,0],[1,0],[-1,-1],[1, -1]],
         name: "Elephant",
@@ -156,7 +156,7 @@ const allCards = [
     },
     {
         id: "mantis",
-        image: "images/cobra.jpeg",
+        image: "images/mantis.jpeg",
         moves: [[1,1],[-1,1],[0,-1]],
         moves2: [[-1,-1],[1,-1],[0,1]],
         name: "Mantis",
@@ -164,7 +164,7 @@ const allCards = [
     },
     {
         id: "boar",
-        image: "images/cobra.jpeg",
+        image: "images/boar.jpeg",
         moves: [[1,0],[-1,0],[0,1]],
         moves2: [[-1,0],[1,0],[0,-1]],
         name: "Boar",
@@ -172,7 +172,7 @@ const allCards = [
     },
     {
         id: "frog",
-        image: "images/cobra.jpeg",
+        image: "images/frog.jpeg",
         moves: [[2,0],[1,1],[-1,-1]],
         moves2: [[-2,0],[-1,-1],[1,1]],
         name: "Frog",
@@ -180,7 +180,7 @@ const allCards = [
     },
     {
         id: "goose",
-        image: "images/cobra.jpeg",
+        image: "images/goose.jpeg",
         moves: [[1,0],[-1,0],[-1,-1],[1,1]],
         moves2: [[-1,0],[1,0],[1,1],[-1,-1]],
         name: "Goose",
@@ -188,7 +188,7 @@ const allCards = [
     },
     {
         id: "horse",
-        image: "images/cobra.jpeg",
+        image: "images/horse.jpeg",
         moves: [[1,0],[0,1],[0,-1]],
         moves2: [[-1,0],[0,-1],[0,1]],
         name: "Horse",
@@ -196,7 +196,7 @@ const allCards = [
     },
     {
         id: "eel",
-        image: "images/cobra.jpeg",
+        image: "images/eel.jpeg",
         moves: [[1,1],[1,-1],[-1,0]],
         moves2: [[-1,-1],[-1,1],[1,0]],
         name: "Eel",
@@ -204,7 +204,7 @@ const allCards = [
     },
     {
         id: "rabbit",
-        image: "images/cobra.jpeg",
+        image: "images/rabbit.jpeg",
         moves: [[1,-1],[-1,1],[-2,0]],
         moves2: [[-1,1],[1,-1],[2,0]],
         name: "Rabbit",
@@ -212,7 +212,7 @@ const allCards = [
     },
     {
         id: "rooster",
-        image: "images/cobra.jpeg",
+        image: "images/rooster.jpeg",
         moves: [[1,0],[-1,0],[1,-1],[-1,1]],
         moves2: [[-1,0],[1,0],[-1,1],[1,-1]],
         name: "Rooster",

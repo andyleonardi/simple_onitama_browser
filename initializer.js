@@ -185,7 +185,7 @@ const shuffleCards = (cardsArr) => {
     let cardsId = [];  // Store the card id to a temp variable
     cardsArr.forEach((card) => cardsId.push(card.id));
 
-    console.log(cardsId);
+    // console.log(cardsId);
     
     // shuffle the cards
     for (let i = cardsId.length - 1; i > 0; i--) {

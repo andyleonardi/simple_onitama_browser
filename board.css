@@ -104,8 +104,13 @@
     width: 1em;
 }
 
-#playlog {
+#playlog-title {
     padding-top: 40px;
+}
+
+#playlog {
+    padding-top: 10px;
+    font-size: 0.8em;
 }
 
 .next-button {
