@@ -61,3 +61,8 @@ footer {
     text-align: left;
     border-radius: 15px;
 }
+
+#self-promote {
+    text-decoration: underline;
+    color: red;
+}
