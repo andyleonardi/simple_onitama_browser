@@ -91,7 +91,8 @@ const selectMeepleAction = (event) => {
     if (prevActiveMeeple !== null) {prevActiveMeeple.classList.remove("activated")};
 
     selectedMeepleId = event.currentTarget.id;
-    logText.textContent = `${selectedCardId} selected, ${selectedMeepleId} selected`;
+    
+    logText.textContent = `${selectedCardId} selected, ${getSelectedName(selectedMeepleId)} selected`;
     event.currentTarget.classList.add("activated");
     selectedMeeplePosition = Number(event.currentTarget.parentNode.id);
     // console.log("selected ", selectedMeepleId, " and its position is ", selectedMeeplePosition)
@@ -121,7 +122,7 @@ const activateSpace = () => {
     }
     
     // For each activeSpaces, add click listener that moves selected meeple to that new space
-    console.log("active spaces selected: ", activeSpaces);
+    // console.log("active spaces selected: ", activeSpaces);
     activeSpaces.forEach((space) => {
         // console.log("space", document.getElementById(`${space}`));
         // Highlight all the eligible spaces
@@ -149,7 +150,7 @@ const moveAction = (event) => {
     // If selected space is empty
     if (selectedSpace.innerHTML === "") {
         // console.log("no opponent present");
-        logText.textContent = `No opponent present, ${selectedMeepleId} moves to space ${selectedSpaceId}`;
+        logText.textContent = `No opponent present, ${getSelectedName(selectedMeepleId)} moves to space ${selectedSpaceId}`;
         // directly append the selected meeple html element to the new space
         selectedSpace.appendChild(selectedMeeple);
         activeSpaces.forEach((space) => {
@@ -168,7 +169,7 @@ const moveAction = (event) => {
     // if selected space is not empty & contains opponent's meeples
     else if (nextPlayerMeeplesId.includes(selectedSpace.firstChild.id) === true) {
         // console.log("opponent present!");
-        logText.textContent = `Opponent present, ${selectedMeepleId} defeats opponent and moves to ${selectedSpaceId}`;
+        logText.textContent = `Opponent present, ${getSelectedName(selectedMeepleId)} defeats opponent and moves to ${selectedSpaceId}`;
         // Check which of opponent's meeples is present
         let whichMeeple = nextPlayerMeeplesId.findIndex((element) => element === selectedSpace.firstChild.id);
         // Update that meeple's life to 0
@@ -226,7 +227,7 @@ const moveCards = () => {
 // When clicked, it will remove the button, and it will invoke the main gameTurn function again, but with new currentPlayerId
 const waitForClick = () => {
     document.querySelector("#next-player").addEventListener("click", (event) => {
-        console.log("next button clicked");
+        // console.log("next button clicked");
         document.querySelector("#next-player").remove();
         gameTurn(currentPlayerId)
     })
@@ -301,4 +302,20 @@ const checkWin = () => {
     }
 
     else {return false;} // do nothing
+}
+
+// Function to get meeple name
+const getSelectedName = (meepleId) => {
+    let playersMeeplesId = [];
+    let playersMeeplesName = [];
+
+    for (let play of playersStats) {
+        play.meeples.forEach((meep) => playersMeeplesId.push(meep.id));
+        play.meeples.forEach((meep) => playersMeeplesName.push(meep.name));
+    }
+
+    let meepleIndex = playersMeeplesId.findIndex((id) => id === `${meepleId}`);
+    let selectedMeepleName = playersMeeplesName[meepleIndex];
+
+    return selectedMeepleName;
 }

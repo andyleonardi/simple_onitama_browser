@@ -32,20 +32,20 @@ initializePlayerStats = () => {
     const playersStats = [
         {
             player: "play-1",
-            meeples: [{id:"meeple-13", life:1, status: "master"},
-                    {id:"meeple-11", life:1, status: "disciple"},
-                    {id:"meeple-12", life:1, status: "disciple"},
-                    {id:"meeple-14", life:1, status: "disciple"},
-                    {id:"meeple-15", life:1, status: "disciple"}],
+            meeples: [{id:"meeple-13", life:1, name: "P1 master"},
+                    {id:"meeple-11", life:1, name: "P1 disciple1"},
+                    {id:"meeple-12", life:1, name: "P1 disciple2"},
+                    {id:"meeple-14", life:1, name: "P1 disciple3"},
+                    {id:"meeple-15", life:1, name: "P1 disciple4"}],
             holder: "hold-1"
         },
         {
             player: "play-2",
-            meeples: [{id:"meeple-53", life:1, status: "master"},
-                    {id:"meeple-51", life:1, status: "disciple"},
-                    {id:"meeple-52", life:1, status: "disciple"},
-                    {id:"meeple-54", life:1, status: "disciple"},
-                    {id:"meeple-55", life:1, status: "disciple"}],
+            meeples: [{id:"meeple-53", life:1, name: "P2 master"},
+                    {id:"meeple-51", life:1, name: "P2 disciple1"},
+                    {id:"meeple-52", life:1, name: "P2 disciple2"},
+                    {id:"meeple-54", life:1, name: "P2 disciple3"},
+                    {id:"meeple-55", life:1, name: "P2 disciple4"}],
             holder: "hold-2"
         }
     ];
